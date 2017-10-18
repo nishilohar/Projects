@@ -1,0 +1,17 @@
+{% extends "snippets/base.html" %}
+
+
+
+{% block content %}
+{% for i in blog_data %}
+	<h4>{{i.question}}</h4><br/>
+	<h5>{{i.answer}}</h5>
+{% endfor %}
+{% if blog_data.has_previous %}
+	<a href="?page={{blog_data.previous_page_number}}">Prev</a>
+{% endif %}
+Page {{ blog_data.number }} of {{ blog_data.paginator.num_pages }}
+{% if blog_data.has_next %}
+	<a href="?page={{ blog_data.next_page_number }}">Next</a>
+{% endif %}
+{% endblock content %}
